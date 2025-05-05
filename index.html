@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azad Bukhari - Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React and ReactDOM CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel for JSX -->
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+  <!-- Google Fonts: Inter (modern, clean font) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Root div for React app -->
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Main App Component
+    function App() {
+      const [darkMode, setDarkMode] = React.useState(true);
+
+      // Toggle dark mode
+      const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+      };
+
+      return (
+        <div className={`min-h-screen font-['Inter'] ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'} transition-colors duration-300`}>
+          {/* Dark Mode Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className="fixed top-4 right-4 p-2 rounded-full bg-blue-500 hover:bg-blue-600 transition"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+
+          {/* Hero Section */}
+          <Hero />
+
+          {/* Projects Section */}
+          <Projects />
+
+          {/* Services Section */}
+          <Services />
+
+          {/* Contact Section */}
+          <Contact />
+        </div>
+      );
+    }
+
+    // Hero Component
+    function Hero() {
+      return (
+        <section className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+          <h1 className="text-5xl font-bold mb-4">Azad Bukhari</h1>
+          <h2 className="text-2xl text-blue-400 mb-6">Freelance Web Developer</h2>
+          <p className="text-lg max-w-md mb-8">
+            I build responsive websites with 1 year of experience.
+          </p>
+          <a
+            href="#contact"
+            className="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-semibold transition"
+          >
+            Get in Touch
+          </a>
+        </section>
+      );
+    }
+
+    // Projects Component
+    function Projects() {
+      const projects = [
+        {
+          title: "Blog Site: My Experience",
+          description: "A personal blog built with HTML and CSS.",
+          tech: "HTML/CSS",
+        },
+        {
+          title: "Portfolio: My Old Portfolio",
+          description: "My first portfolio website built with React.",
+          tech: "React",
+        },
+      ];
+
+      return (
+        <section id="projects" className="py-16 px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition"
+              >
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <p className="text-blue-400 font-medium">{project.tech}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    // Services Component
+    function Services() {
+      const services = [
+        {
+          title: "Web Development",
+          description: "Custom websites tailored to your needs.",
+          price: "$30/hour",
+        },
+        {
+          title: "UI Design",
+          description: "User-friendly interfaces for better experiences.",
+          price: "$200/project",
+        },
+      ];
+
+      return (
+        <section id="services" className="py-16 px-4 bg-gray-800">
+          <h2 className="text-3xl font-bold text-center mb-12">Services</h2>
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="p-6 bg-gray-900 rounded-lg shadow-lg hover:shadow-xl transition"
+              >
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-300 mb-4">{service.description}</p>
+                <p className="text-blue-400 font-medium">{service.price}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    // Contact Component
+    function Contact() {
+      return (
+        <section id="contact" className="py-16 px-4 text-center">
+          <h2 className="text-3xl font-bold mb-12">Contact Me</h2>
+          <div className="max-w-md mx-auto space-y-6">
+            <p className="text-lg">
+              Email:{' '}
+              <a
+                href="mailto:azadbukhariaziz@outlook.com"
+                className="text-blue-400 hover:underline"
+              >
+                azadbukhariaziz@outlook.com
+              </a>
+            </p>
+            <p className="text-lg">
+              GitHub:{' '}
+              <a
+                href="https://github.com/azadbukhari1234"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                github.com/azadbukhari1234
+              </a>
+            </p>
+            <p className="text-gray-300">
+              Let's collaborate on your next project!
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    // Render the App
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
